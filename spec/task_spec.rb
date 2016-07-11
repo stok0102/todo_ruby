@@ -43,4 +43,5 @@ describe(Task) do
       expect(task1).to(eq(task2))
     end
   end
+
 end

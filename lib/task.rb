@@ -1,3 +1,5 @@
+require('pry')
+
 class Task
   attr_reader(:description, :list_id, :due_date)
 
@@ -14,6 +16,7 @@ class Task
       description = task.fetch("description")
       list_id = task.fetch("list_id").to_i()
       due_date = task.fetch("due_date")
+      id = task.fetch("id")
       tasks.push(Task.new({:description => description, :list_id => list_id, :due_date => due_date}))
     end
     tasks
