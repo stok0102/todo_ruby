@@ -41,8 +41,9 @@ class List
     tasks = DB.exec("SELECT * FROM tasks WHERE list_id = #{self.id()};")
     tasks.each() do |task|
       description = task.fetch("description")
+      due_date = task.fetch("due_date")
       list_id = task.fetch("list_id").to_i()
-      list_tasks.push(Task.new({:description => description, :list_id => list_id, :due_date => '2016-07-12'}))
+      list_tasks.push(Task.new({:description => description, :list_id => list_id, :due_date => due_date}))
     end
     list_tasks
   end
