@@ -44,4 +44,13 @@ describe(Task) do
     end
   end
 
+  describe("#delete") do
+    it("deletes a task") do
+      task1 = Task.new({:description => "learn SQL", :list_id => 1, :due_date => '2016-07-12'})
+      task1.save()
+      expect(Task.all()).to(eq([task1]))
+      task1.delete()
+      expect(Task.all()).to(eq([]))
+    end
+  end
 end
