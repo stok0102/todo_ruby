@@ -46,6 +46,13 @@ patch("/lists/:id") do
   erb(:list)
 end
 
+delete("/lists/:id") do
+  @list = List.find(params.fetch("id").to_i())
+  @list.delete()
+  @lists = List.all()
+  erb(:index)
+end
+
 post("/tasks") do
   description = params.fetch("description")
   due_date = params.fetch("due_date")
