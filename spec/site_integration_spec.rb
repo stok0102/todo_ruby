@@ -39,7 +39,7 @@ describe('adding tasks to a list', {:type => :feature}) do
   it('allows a user to add a task to a list') do
     test_list = List.new({:name => 'School stuff'})
     test_list.save()
-    visit("/lists/#{test_list.id()}")
+    visit("/")
     fill_in("description", {:with => "Learn SQL"})
     fill_in("due_date", {:with => "2016-07-12"})
     click_button("Add task")
