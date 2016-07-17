@@ -1,5 +1,3 @@
-require('pry')
-
 class Task
   attr_reader(:description, :list_id, :due_date)
 
