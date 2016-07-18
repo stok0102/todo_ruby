@@ -4,10 +4,9 @@
   <h3>Here are all the tasks in this list:</h3>
 
   <ul>
-    <% @list.tasks().each() do |task| %>
-      <li><%= task.description() %> Due: <%= task.due_date() %></li>
-      <button>Delete</button>
-    <% end %>
+    <% @tasks.each() do |task| %>
+    <li><%= task.description %> <a href="/tasks/<%= task.id() %>/edit">Update this task's description</a></li>
+  <% end %>
   </ul>
 
   <% else %>

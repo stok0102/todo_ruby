@@ -30,6 +30,7 @@ end
 
 get('/lists/:id') do
   @list = List.find(params.fetch("id").to_i())
+  @tasks = Task.all()
   erb(:list)
 end
 
@@ -49,6 +50,7 @@ delete("/lists/:id") do
   @list = List.find(params.fetch("id").to_i())
   @list.delete()
   @lists = List.all()
+  @tasks = Task.all()
   erb(:index)
 end
 
@@ -61,9 +63,17 @@ post("/tasks") do
   @task.save()
   erb(:task_success)
 end
-# post("/tasks") do
-#   description = params.fetch("description")
-#   task = Task.new(description)
-#   task.save()
-#   erb(:success)
-# end
+
+get('/tasks/:id/edit') do
+  @task = Task.find(params.fetch("id").to_i())
+  erb(:task_edit)
+end
+
+patch("/tasks/:id") do
+  description = params.fetch("description")
+  @task = Task.find(params.fetch("id").to_i())
+  @task.update({:description => description})
+  @tasks = Task.all()
+  @lists = List.all()
+  erb(:index)
+end
